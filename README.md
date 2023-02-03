@@ -188,8 +188,8 @@ Make sure to back up any previous configurations before doing so.
 ##### Navigation
 
 - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua) - file explorer in tree view.
-- [telescope.nvim](https://github.com/nvim-telescope) - fuzzy finder over lists. super useful, similar to fzf but far more extensible.<br>
- extensions: 
+- [telescope.nvim](https://github.com/telescope.nvim) - fuzzy finder over lists. super useful, similar to fzf but far more extensible.<br>
+ [extensions](https://github.com/nvim-telescope): 
 	- [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - provides fzf search functionalities.
 	- [telescope-live-grep-args](https://github.com/nvim-telescope/telescope-live-grep-args.nvim) - allows to pass arguments to live grep.
 	- [telescope-ghq](https://github.com/nvim-telescope/telescope-ghq.nvim) - ghq integration for repository management.
@@ -198,8 +198,8 @@ Make sure to back up any previous configurations before doing so.
 
 - [mason](https://github.com/williamboman/mason.nvim) - lsp,dap,linter,formatter installer. Mason has external API plugins for each installer:
   - [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
-  - [mason-null-ls](https://github.com/jayp0521/mason-lspconfig.nvim)
-  - [mason-nvim-dap](https://github.com/jayp0521/mason-lspconfig.nvim)
+  - [mason-null-ls](https://github.com/jayp0521/mason-null-ls.nvim)
+  - [mason-nvim-dap](https://github.com/jayp0521/mason-nvim-dap.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - for language server protocols.
 - [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim) - used primarily for formatting/linting diagnostics, provides a lot more.
 - [neodev](https://github.com/folke/neodev.nvim) - settings and configurations for lua lsp.
@@ -259,7 +259,7 @@ If you are a beginner to Vim I strongly recommend using the built in tutor to ge
 When in nvim use `:tutor`.
 
 If you wish to understand the configurations or better, modify/extend them, learning basic `lua` is necessary.
-There are many guides out there, but this covers most of what you need: [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide)
+There are many guides out there, but this covers most of what you need: [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide).
 
 ---
 
