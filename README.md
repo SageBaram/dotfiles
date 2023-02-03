@@ -308,3 +308,4 @@ There is a paid version which is not mandatory but I highly recommend it to expe
 
 ## For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
 
+test
