@@ -30,9 +30,10 @@ There are a lot of resources
       - [Tmux](#tmux)
       - [Git](#git)
       - [Alfred](#alfred)
-  - [For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).](#for-any-questions-regarding-the-configurations-feel-free-to-open-an-issuehttpsgithubcomjustsagepublic-dotfilesissuesnew)
+
 <!--toc:end-->
 
+  For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
 
 ---
 
@@ -40,7 +41,7 @@ There are a lot of resources
 
 - This repo contains years of experience of my personal workflow, it may not suit your personal needs but feel free to grab whatever is useful to you.
 - If you are running Linux or Windows, do not use the <strong>bootstrap script</strong>.
-- If any plugin yields an error please file an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
+- If any plugin yields an error please file an [issue](https://github.com/SageBaram/dotfiles/issues/new).
 
 - I do not claim any responsibility if these application cause harm to your computer, these are public applications which are maintained by other developers;
 - In case something happens because of an application mentioned here - head over to their repository and file an issue on the topic.
@@ -50,7 +51,7 @@ There are a lot of resources
 <details>
 <summary>Bootstrap is yet tested, use at your own risk.</summary>
 
-[Bootstrap script](https://github.com/JustSage/public-dotfiles/blob/master/workspace/self/scripts/.cfg-install.sh) included. Please read the script carefully to understand what software you are installing.
+[Bootstrap script](https://github.com/SageBaram/dotfiles/blob/master/workspace/self/scripts/.cfg-install.sh) included. Please read the script carefully to understand what software you are installing.
 
 > ##### TLDR (Bootstrap explained):
 
@@ -74,7 +75,7 @@ There are a lot of resources
 - Make the script executable with chmod and run the script.
 
 ```bash
-git clone https://github.com/JustSage/public-dotfiles.git
+git clone https://github.com/SageBaram/dotfiles.git
 
 cd path/to/repo/workspace/self/scripts
 
@@ -120,7 +121,7 @@ Instead you should browse their [repository](https://github.com/ohmyzsh/ohmyzsh/
 You can copy the `.zsh` file contents and source it in your `.zshrc` the shell run-command file.
 
 Some of the plugins I use extensively are [Fzf](https://github.com/junegunn/fzf), a general purpose fuzzy finder while in terminal buffers.<br>
-Zsh [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/), zsh [vi-mode](https://github.com/JustSage/public-dotfiles/blob/master/.config/zsh/vi-mode.zsh) for vi keybinds in the terminal, [Z](https://github.com/agkozak/zsh-z) for quick & seamless navigation to directories.<br>
+Zsh [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) and [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/), zsh [vi-mode](https://github.com/SageBaram/dotfiles/blob/master/.config/zsh/vi-mode.zsh) for vi keybinds in the terminal, [Z](https://github.com/agkozak/zsh-z) for quick & seamless navigation to directories.<br>
 You may use a full fledged [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode) but personally I think it's an overkill.
 
 Highly recommend looking into [XDG Base Directory](https://wiki.archlinux.org/title/XDG_Base_Directory) to declutter your home directory,
@@ -166,7 +167,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
-Check out [my neovim configurations](https://github.com/JustSage/public-dotfiles/tree/master/.config/nvim) or clone [the repository](https://github.com/JustSage/public-dotfiles/archive/refs/heads/master.zip) and copy `nvim` folder to your `.config`.
+Check out [my neovim configurations](https://github.com/SageBaram/dotfiles/tree/master/.config/nvim) or clone [the repository](https://github.com/SageBaram/dotfiles/archive/refs/heads/master.zip) and copy `nvim` folder to your `.config`.
 Make sure to back up any previous configurations before doing so.
 
 > Currently set up for python and web development.
@@ -226,7 +227,7 @@ Make sure to back up any previous configurations before doing so.
 ##### Completion Engines
 
 - [cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion engine.
-	- [sources I use in the config](https://github.com/JustSage/public-dotfiles/blob/046ba2cc8f48173643fb919b702043f570e5220c/.config/nvim/lua/plugins/init.lua#L127).
+	- [sources I use in the config](https://github.com/SageBaram/dotfiles/blob/046ba2cc8f48173643fb919b702043f570e5220c/.config/nvim/lua/plugins/init.lua#L127).
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - snippet engine support plugin.
 - [luasnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine.
 
@@ -307,5 +308,3 @@ There is a paid version which is not mandatory but I highly recommend it to expe
 ---
 
 ## For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
-
-test
