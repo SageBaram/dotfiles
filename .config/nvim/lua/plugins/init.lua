@@ -44,7 +44,6 @@ return packer.startup(function(use)
 
 	use({
 		"norcalli/nvim-colorizer.lua",
-		buftype = { "css", "javascript", "reactjavascript", "markdown", "json" },
 		event = "BufRead",
 		config = function()
 			require("plugins.configs.others").colorizer()
@@ -63,13 +62,10 @@ return packer.startup(function(use)
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
 		after = "nvim-lspconfig",
-		buftype = { "python", "lua", "javascript", "css", "reactjavascript", "json", "c", "cpp" },
 		config = function()
 			require("plugins.configs.lspsaga")
 		end,
-		requires = { {
-			"nvim-tree/nvim-web-devicons",
-		} },
+		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 
 	use({
@@ -105,6 +101,8 @@ return packer.startup(function(use)
 	})
 
 	-- Completion engine & Snippets
+	use({ "rafamadriz/friendly-snippets", event = "InsertEnter" })
+
 	use({
 		"hrsh7th/nvim-cmp",
 		after = "friendly-snippets",
@@ -125,7 +123,6 @@ return packer.startup(function(use)
 			require("plugins.configs.autopairs")
 		end,
 	})
-	use({ "rafamadriz/friendly-snippets", event = "InsertEnter" })
 	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
@@ -134,7 +131,6 @@ return packer.startup(function(use)
 	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
 	use({ "bydlw98/cmp-env", after = "nvim-cmp" })
 	use({ "dcampos/cmp-emmet-vim", after = "cmp-nvim-lsp" })
-	use({ "andersevenrud/cmp-tmux", after = "nvim-cmp" })
 	use({ "jcha0713/cmp-tw2css", after = "cmp-nvim-lsp" })
 	use({ "kdheepak/cmp-latex-symbols", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "cmp-nvim-lsp" })
@@ -208,6 +204,7 @@ return packer.startup(function(use)
 
 	-- Git related
 	use({ "tpope/vim-fugitive" })
+
 	use({
 		"sindrets/diffview.nvim",
 		config = function()
@@ -259,7 +256,6 @@ return packer.startup(function(use)
 
 	use({
 		"mattn/emmet-vim",
-		ft = { "markdown", "javascript", "html", "css", "reactjavascript" },
 		config = function()
 			vim.g.user_emmet_mode = "a"
 			vim.g.user_emmet_leader_key = ","
