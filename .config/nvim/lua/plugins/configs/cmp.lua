@@ -81,7 +81,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
-		{ name = "emmet_vim" },
+		-- { name = "emmet_vim" },
 		{ name = "latex_symbols", option = { strategy = 2 } },
 		{ name = "cmp-tw2css" },
 		{
