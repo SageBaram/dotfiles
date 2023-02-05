@@ -6,7 +6,7 @@ if [ -d "$HOME/.cfg" ]; then
 	git pull
 	cd "$MY_CWD" || return
 else
-	git clone --bare https://github.com/JustSage/public-dotfiles.git "$HOME/.cfg"
+	git clone --bare https://github.com/SageBaram/dotfiles.git "$HOME/.cfg"
 fi
 
 function config {
