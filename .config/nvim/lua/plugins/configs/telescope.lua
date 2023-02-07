@@ -11,6 +11,10 @@ telescope.setup({
 				["<C-q>"] = require("telescope.actions").send_to_qflist,
 				["<C-k>"] = require("telescope.actions").move_selection_previous,
 				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
+			},
+			n = {
+				["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
 			},
 		},
 		vimgrep_arguments = {
