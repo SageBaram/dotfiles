@@ -45,6 +45,7 @@ return packer.startup(function(use)
 	use({
 		"norcalli/nvim-colorizer.lua",
 		event = "BufRead",
+		ft = { "css", "javascript", "html", "reactjavascript", "markdown" },
 		config = function()
 			require("plugins.configs.others").colorizer()
 		end,
@@ -130,7 +131,6 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
 	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
 	use({ "bydlw98/cmp-env", after = "nvim-cmp" })
-	use({ "dcampos/cmp-emmet-vim", after = "cmp-nvim-lsp" })
 	use({ "jcha0713/cmp-tw2css", after = "cmp-nvim-lsp" })
 	use({ "kdheepak/cmp-latex-symbols", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "cmp-nvim-lsp" })
@@ -297,7 +297,7 @@ return packer.startup(function(use)
 
 	use({
 		"lukas-reineke/headlines.nvim",
-		filetype = { "markdown" },
+		ft = { "markdown" },
 		config = function()
 			require("plugins.configs.headlines")
 		end,
@@ -308,6 +308,14 @@ return packer.startup(function(use)
 		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("plugins.configs.alpha")
+		end,
+	})
+
+	use({
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("plugins.configs.trouble")
 		end,
 	})
 end)
