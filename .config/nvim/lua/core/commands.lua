@@ -41,19 +41,3 @@ cmd([[autocmd FileType python,lua,java setlocal expandtab tabstop=4 shiftwidth=4
 cmd([[ au TermOpen term://* setfiletype terminal ]])
 -- initiates new java class with file name when opening a new file
 cmd([[ au BufNewFile *.java exe "normal opublic class " . expand('%:t:r') "\n{\n\n}"]])
-
--- local current_buffer = vim.api.nvim_get_current_buf()
---
--- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
---     callback = function()
---         vim.diagnostic.enable(current_buffer)
---         vim.g.diagnostic_state = true
---     end
--- })
-
--- vim.api.nvim_create_autocmd({ "InsertEnter" }, {
---     callback = function()
---         vim.diagnostic.disable(current_buffer)
---         vim.g.diagnostic_state = false
---     end
--- })
