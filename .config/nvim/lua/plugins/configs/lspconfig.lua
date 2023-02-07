@@ -100,7 +100,7 @@ vim.notify = function(msg, log_level)
 end
 
 mason_lspconfig.setup({
-	ensure_installed = { "pyright", "tsserver", "sumneko_lua", "tailwindcss" },
+	ensure_installed = { "pyright", "tsserver", "sumneko_lua" },
 })
 
 lspconfig.tsserver.setup({
@@ -111,10 +111,11 @@ lspconfig.tsserver.setup({
 	cmd = { "typescript-language-server", "--stdio" },
 })
 
-lspconfig.tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+-- currently causing lags in css files
+-- lspconfig.tailwindcss.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- })
 
 lspconfig.html.setup({
 	on_attach = on_attach,
@@ -189,7 +190,6 @@ lspconfig.bashls.setup({
 lspconfig.marksman.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	-- cmd = { "markdown", "server" },
 	filetypes = { "markdown" },
 	root_dir = util.root_pattern(".git", ".marksman.toml"),
 })
