@@ -65,9 +65,6 @@ bo.expandtab = true
 o.signcolumn = "yes"
 wo.wrap = false
 
--- change directory upon opening buffers, windows etc.
--- g.autochdir = true
-
 -- providers
 g.python3_host_prog = "$PYENV_ROOT/shims/python"
 g.python2_host_prog = "/usr/bin/python2"
