@@ -41,7 +41,7 @@ map("n", "<leader>k", ":m .-2<CR>==")
 
 vim.keymap.set("n", "<leader>/", ":%s/<C-r><C-w>//gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>?", ":%s/\\<<C-r><C-w>\\>//gI<Left><Left><Left>")
-map("n", "<leader>x", ":!chmod +x %<CR>", { silent = true })
+map("n", "<leader>ch", ":!chmod +x %<CR>", { silent = true })
 
 -- Better undo - undos to punctuation
 map("i", ",", ",<c-g>u")
@@ -62,15 +62,15 @@ map("n", "<Leader>'", ":lua require('neogen').generate()<CR>")
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- Telescope
-vim.keymap.set("n", "<leader>fs", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end)
 
 vim.api.nvim_create_user_command("Dotfiles", function()
 	require("telescope.builtin").find_files({ cwd = "~/.config/", prompt_title = "< Dotfiles >", hidden = true })
 end, {})
-
 vim.keymap.set("n", "<leader>rc", ":Dotfiles<CR>")
+
+vim.keymap.set("n", "<leader>fs", function()
+	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+end)
 vim.keymap.set("n", "<leader>gc", function()
 	require("telescope.builtin").git_commits()
 end, {})
@@ -100,13 +100,10 @@ map("n", "<leader>gq", ":lua require('telescope').extensions.ghq.list()<CR>", { 
 -- Nvim Tree
 map("n", "<leader>n", ":NvimTreeToggle<CR>")
 
--- -- Tmux integration
--- map("n", "<C-Up>", ":lua require('tmux').move_top()<CR>")
--- map("n", "<C-Down>", ":lua require('tmux').move_bottom()<CR>")
--- map("n", "<C-Left>", ":lua require('tmux').move_left()<CR>")
--- map("n", "<C-Right>", ":lua require('tmux').move_right()<CR>")
---
--- map("n", "M-h", ":lua require('tmux').resize_left()<CR>")
--- map("n", "M-j", ":lua require('tmux').resize_bottom()<CR>")
--- map("n", "M-k", ":lua require('tmux').resize_top()<CR>")
--- map("n", "M-l", ":lua require('tmux').resize_right()<CR>")
+-- Trouble
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
