@@ -1,14 +1,22 @@
-local _packer, packer = pcall(require, "plugins.bootstrap")
-if not _packer then
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
 	return false
 end
 
-return packer.startup(function(use)
+local packer_bootstrap = ensure_packer()
+
+return require("packer").startup(function(use)
 	-- Faster startup speeds
 	use({ "lewis6991/impatient.nvim" })
 
 	-- Plugin manager
-	use({ "wbthomason/packer.nvim", opt = true })
+	use({ "wbthomason/packer.nvim" })
 
 	-- UI & Colors, icons
 	use({
@@ -318,4 +326,7 @@ return packer.startup(function(use)
 			require("plugins.configs.trouble")
 		end,
 	})
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
