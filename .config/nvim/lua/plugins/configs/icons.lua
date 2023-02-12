@@ -1,101 +1,43 @@
 local present, icons = pcall(require, "nvim-web-devicons")
 if not present then
-    return
+	return
 end
 
-icons.setup {
-    override = {
-        html = {
-            icon = "",
-            name = "html"
-        },
-        css = {
-            icon = "",
-            name = "css"
-        },
-        js = {
-            icon = "",
-            name = "js"
-        },
-        ts = {
-            icon = "ﯤ",
-            name = "ts"
-        },
-        png = {
-            icon = "",
-            name = "png"
-        },
-        jpg = {
-            icon = "",
-            name = "jpg"
-        },
-        jpeg = {
-            icon = "",
-            name = "jpeg"
-        },
-        mp3 = {
-            icon = "",
-            name = "mp3"
-        },
-        mp4 = {
-            icon = "",
-            name = "mp4"
-        },
-        out = {
-            icon = "",
-            name = "out"
-        },
-        Dockerfile = {
-            icon = "",
-            name = "Dockerfile"
-        },
-        rb = {
-            icon = "",
-            name = "rb"
-        },
-        vue = {
-            icon = "﵂",
-            name = "vue"
-        },
-        py = {
-            icon = "",
-            name = "py"
-        },
-        toml = {
-            icon = "",
-            name = "toml"
-        },
-        lock = {
-            icon = "",
-            name = "lock"
-        },
-        zip = {
-            icon = "",
-            name = "zip"
-        },
-        xz = {
-            icon = "",
-            name = "xz"
-        },
-        lua = {
-            icon = "",
-            name = "lua"
-        },
-        xlsx = {
-          icon = "",
-          name = "excel"
-        },
-        csv = {
-          icon = "",
-          name = "csv"
-        },
-        ipynb = {
-          icon = "",
-          name = "ipynb"
-        },
-        md = {
-          icon = "",
-          name = "markdown"
-        }
-    }
-}
+local defaults = icons.get_icons()
+
+local override = function(icon, name)
+	return {
+		name = defaults[name].name,
+		color = defaults[name].color,
+		cterm_color = defaults[name].cterm_color,
+		icon = icon,
+	}
+end
+
+icons.setup({
+	override = {
+		html = override("", "html"),
+		css = override("", "css"),
+		js = override("", "js"),
+		ts = override("ﯤ", "ts"),
+		png = override("", "png"),
+		jpg = override("", "jpg"),
+		jpeg = override("", "jpeg"),
+		rb = override("", "rb"),
+		vue = override("﵂", "vue"),
+		py = override("", "py"),
+		toml = override("", "toml"),
+		lock = override("", "lock"),
+		lua = override("", "lua"),
+		md = override("", "markdown"),
+		Dockerfile = override("", "Dockerfile"),
+		-- zip = override("", "zip"),
+		-- xz = override("", "xz"),
+		-- mp3 = override("", "mp3"),
+		-- mp4 = override("", "mp4"),
+		-- out = override("", "out"),
+		-- xlsx = override("", "excel"),
+		-- csv = override("", "csv"),
+		-- ipynb = override("", "ipynb"),
+	},
+})
