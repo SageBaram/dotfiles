@@ -2,7 +2,6 @@
 
 Hello, I am Sage, a Software Engineering student. <br>
 In this repo, I organize all of my MacOS configurations and share the tools and workflows that might fit you as a developer!
-There are a lot of resources 
 
 ## Table of Contents
 
@@ -30,7 +29,7 @@ There are a lot of resources
       - [Tmux](#tmux)
       - [Git](#git)
       - [Alfred](#alfred)
-
+  - [For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).](#for-any-questions-regarding-the-configurations-feel-free-to-open-an-issuehttpsgithubcomjustsagepublic-dotfilesissuesnew)
 <!--toc:end-->
 
   For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
@@ -194,6 +193,9 @@ Make sure to back up any previous configurations before doing so.
 	- [telescope-live-grep-args](https://github.com/nvim-telescope/telescope-live-grep-args.nvim) - allows to pass arguments to live grep.
 	- [telescope-ghq](https://github.com/nvim-telescope/telescope-ghq.nvim) - ghq integration for repository management.
 - [tmux](https://github.com/aserowy/tmux.nvim) - tmux integration with neovim.
+- [harpoon](https://github.com/ThePrimeagen/harpoon) - better mark system to switch between frequent files.
+- [project.nvim](https://github.com/ahmedkhalf/project.nvim) - project management integrated with telescope.
+
 ##### LSP & Related
 
 - [mason](https://github.com/williamboman/mason.nvim) - lsp,dap,linter,formatter installer. Mason has external API plugins for each installer:
