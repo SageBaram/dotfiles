@@ -22,14 +22,7 @@ local function on_attach(client, bufnr)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<space>gd", vim.lsp.buf.type_definition, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -55,27 +48,30 @@ capabilities.textDocument.completion.completionItem = {
 -- replace the default lsp diagnostic symbols
 
 local signs = {
-	{ name = "DiagnosticsSignError", text = "" },
-	{ name = "DiagnosticsSignWarn", text = "" },
-	{ name = "DiagnosticsSignHint", text = "" },
-	{ name = "DiagnosticsSignInfo", text = "" },
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
 }
 
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 local config = {
 	virtual_text = {
 		prefix = "",
 		spacing = 0,
 	},
-	signs = { active = signs },
-	underline = true,
-
-	-- set this to true if you want diagnostics to show in insert mode
+	-- enables lsp_lines but we want to start disabled
+	virtual_lines = false,
+	-- show signs
+	signs = {
+		active = signs,
+	},
 	update_in_insert = false,
+	underline = true,
+	severity_sort = true,
 }
 
 vim.diagnostic.config(config)
@@ -87,7 +83,16 @@ vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
 	return true
 end
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
+
 -- suppress error messages from lang servers
+---@diagnostic disable-next-line: duplicate-set-field
 vim.notify = function(msg, log_level)
 	if msg:match("exit code") then
 		return
@@ -100,7 +105,7 @@ vim.notify = function(msg, log_level)
 end
 
 mason_lspconfig.setup({
-	ensure_installed = { "pyright", "tsserver", "sumneko_lua" },
+	ensure_installed = { "pyright", "tsserver", "html", "cssls", "emmet_ls", "lua_ls" },
 })
 
 lspconfig.tsserver.setup({
@@ -109,13 +114,8 @@ lspconfig.tsserver.setup({
 	root_dir = util.root_pattern("package.json", ".git") or vim.fn.expand("%p"),
 	filetype = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
+	single_file_support = true,
 })
-
--- currently causing lags in css files
--- lspconfig.tailwindcss.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
 
 lspconfig.html.setup({
 	on_attach = on_attach,
@@ -136,7 +136,7 @@ lspconfig.html.setup({
 lspconfig.emmet_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+	filetypes = { "html", "typescriptreact", "javascriptreact" },
 	init_options = {
 		html = {
 			options = {
@@ -194,7 +194,7 @@ lspconfig.marksman.setup({
 	root_dir = util.root_pattern(".git", ".marksman.toml"),
 })
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = vim.F.if_nil(
