@@ -48,8 +48,10 @@
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
-[mergetool "nvim"]
-  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+[mergetool "fugitive"]
+  cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
+[merge]
+  tool = fugitive
 
 [ghq]
   vcs = git
