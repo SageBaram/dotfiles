@@ -19,10 +19,11 @@ o.errorbells = false -- avoids screen flashes.
 o.showmode = false -- avoids hl messages in different modes.
 o.ignorecase = true -- the case of normal letters is ignored.
 o.smartcase = true -- overrides ignorecase if search includes uppercase letters.
-bo.swapfile = false -- disable swapfile generator.
+o.swapfile = false -- disable swapfile generator.
 o.backup = false -- disable backupfile generator.
 o.undofile = true -- disable undofile generator.
 o.incsearch = true -- incremental search.
+o.hlsearch = true -- highlights search
 o.inccommand = "split" -- incremental subtitution
 bo.autoindent = true -- figures out how to indent.
 bo.smartindent = true -- figures out when to indent.
@@ -32,9 +33,10 @@ o.showcmd = true -- shows command on the right side of the command prompt.
 o.cmdheight = 1 -- command prompt height.
 o.scrolloff = 10 -- keep 'n' lines visible when scrolling.
 o.lazyredraw = true -- good performance settings.
+o.colorcolumn = "80"
 o.diffopt = "vertical" -- opens git diff in vertical split.
-o.timeoutlen = 250 -- timeout before key refresh.
-o.updatetime = 250 -- update interval for gitsigns.
+o.timeoutlen = 350 -- timeout before key refresh.
+o.updatetime = 50 -- update interval for gitsigns.
 o.keywordprg = ":help" -- open help with 'K'.
 o.clipboard = "" -- clipboard settings for my os (darwin)
 o.fillchars = { eob = " " } -- avoid trailing whitespace
@@ -54,12 +56,28 @@ o.wildignore:append({
 	"versions/*",
 	"cache/*",
 })
-o.suffixesadd:append({ ".html", ".js", ".es", ".jsx", ".json", ".css", ".sass", ".py", ".md", ".java", ".c", ".cpp" })
 
+o.suffixesadd:append({
+	".html",
+	".js",
+	".es",
+	".jsx",
+	".json",
+	".css",
+	".sass",
+	".py",
+	".md",
+	".java",
+	".c",
+	".cpp",
+})
+
+vim.opt.undodir = vim.fn.expand("$XDG_CACHE_HOME/nvim/undodir/")
 o.dictionary = "/usr/share/dict/words"
-bo.tabstop = 2
-bo.softtabstop = 2
-bo.shiftwidth = 2
+
+bo.tabstop = 4
+bo.softtabstop = 4
+bo.shiftwidth = 4
 bo.expandtab = true
 
 o.signcolumn = "yes"
@@ -73,7 +91,6 @@ env.GIT_WORK_TREE = vim.fn.expand("$HOME")
 env.GIT_DIR = vim.fn.expand("$HOME/.cfg")
 
 local disabled_built_ins = {
-	"netrw",
 	"netrwPlugin",
 	"netrwSettings",
 	"netrwFileHandlers",
