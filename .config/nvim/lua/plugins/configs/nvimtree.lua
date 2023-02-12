@@ -4,7 +4,8 @@ if not status then
 end
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
-tree.setup({ -- BEGIN_DEFAULT_OPTS
+tree.setup({
+	-- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = false,
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -13,9 +14,9 @@ tree.setup({ -- BEGIN_DEFAULT_OPTS
 	sort_by = "name",
 	root_dirs = {},
 	prefer_startup_root = false,
-	sync_root_with_cwd = false,
+	sync_root_with_cwd = true,
+	respect_buf_cwd = true,
 	reload_on_bufenter = false,
-	respect_buf_cwd = false,
 	on_attach = "disable",
 	remove_keymaps = false,
 	select_prompts = false,
