@@ -1,17 +1,9 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
+local _packer, packer = pcall(require, "plugins.bootstrap")
+if not _packer then
 	return false
 end
 
-local packer_bootstrap = ensure_packer()
-
-return require("packer").startup(function(use)
+return packer.startup(function(use)
 	-- Faster startup speeds
 	use({ "lewis6991/impatient.nvim" })
 
@@ -34,6 +26,14 @@ return require("packer").startup(function(use)
 			require("plugins.configs.icons")
 		end,
 	}) -- NOTE: requires nerd font }
+
+	use({
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("plugins.configs.alpha")
+		end,
+	})
 
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -69,21 +69,12 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"glepnir/lspsaga.nvim",
-		event = "BufRead",
-		after = "nvim-lspconfig",
+		"akinsho/toggleterm.nvim",
+		keys = { { "n", "<C-t>" }, { "n", "<leader>gt" } },
 		config = function()
-			require("plugins.configs.lspsaga")
+			require("plugins.configs.terminal")
 		end,
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
-
-	use({
-		"lewis6991/gitsigns.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("plugins.configs.gitsigns")
-		end,
+		tag = "*",
 	})
 
 	-- Lsp related
@@ -104,10 +95,22 @@ return require("packer").startup(function(use)
 
 	use({
 		"neovim/nvim-lspconfig",
+		module = "nvim-lspconfig",
 		after = "mason.nvim",
 		config = function()
 			require("plugins.configs.lspconfig")
 		end,
+	})
+
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		event = "BufRead",
+		after = "nvim-lspconfig",
+		config = function()
+			require("plugins.configs.lspsaga")
+		end,
+		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 
 	-- Completion engine & Snippets
@@ -123,7 +126,7 @@ return require("packer").startup(function(use)
 	use({
 		"L3MON4D3/LuaSnip",
 		wants = "friendly-snippets",
-		after = "nvim-cmp",
+		run = "make install_jsregexp",
 	})
 
 	use({
@@ -138,11 +141,10 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
-	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
-	use({ "bydlw98/cmp-env", after = "nvim-cmp" })
-	use({ "jcha0713/cmp-tw2css", after = "cmp-nvim-lsp" })
-	use({ "kdheepak/cmp-latex-symbols", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "cmp-nvim-lsp" })
+	use({ "bydlw98/cmp-env", after = "nvim-cmp" })
+	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" })
+	use({ "dcampos/cmp-emmet-vim", after = "nvim-cmp" })
 
 	-- File navigation & fuzzy finder
 	use({
@@ -157,14 +159,40 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
+		module = "telescope",
 		requires = {
-			"nvim-lua/plenary.nvim",
+			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
-			{ "nvim-telescope/telescope-ghq.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
 		config = function()
 			require("plugins.configs.telescope")
+		end,
+	})
+
+	use({
+		"theprimeagen/harpoon",
+		config = function()
+			require("plugins.configs.harpoon")
+		end,
+	})
+
+	use({
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({
+				manual_mode = false,
+				show_hidden = true,
+			})
+		end,
+	})
+
+	use({
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("plugins.configs.trouble")
 		end,
 	})
 
@@ -203,6 +231,7 @@ return require("packer").startup(function(use)
 	})
 
 	-- Formatting and linting
+
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		after = "nvim-lspconfig",
@@ -212,8 +241,16 @@ return require("packer").startup(function(use)
 	})
 
 	-- Git related
-	use({ "tpope/vim-fugitive" })
 
+	use({ "tpope/vim-fugitive" })
+	use({ "tpope/vim-rhubarb" })
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("plugins.configs.signs")
+		end,
+	})
 	use({
 		"sindrets/diffview.nvim",
 		config = function()
@@ -223,26 +260,24 @@ return require("packer").startup(function(use)
 	})
 
 	-- Essentials
-	use({
-		"mbbill/undotree",
-		keys = { "n", "<leader>u" },
-	})
+	use({ "mbbill/undotree", keys = { "n", "<leader>u" } })
 	use({ "tpope/vim-surround" })
 	use({ "tpope/vim-repeat" })
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("plugins.configs.comment")
-		end,
-	})
 	use({ "andymass/vim-matchup", event = "CursorMoved" })
-
 	use({
 		"windwp/nvim-ts-autotag",
 		after = "nvim-treesitter",
 		branch = "main",
 		config = function()
 			require("nvim-ts-autotag").setup()
+		end,
+	})
+
+	-- Commenting and documentation
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("plugins.configs.comment")
 		end,
 	})
 
@@ -255,53 +290,20 @@ return require("packer").startup(function(use)
 		tag = "*",
 	})
 
-	-- Integrations and misc
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	})
+
+	-- Markdown
 	use({
 		"iamcco/markdown-preview.nvim",
 		cmd = "MarkdownPreview",
 		ft = "markdown",
 		run = [[sh -c 'cd app && yarn install']],
-	})
-
-	use({
-		"mattn/emmet-vim",
-		config = function()
-			vim.g.user_emmet_mode = "a"
-			vim.g.user_emmet_leader_key = ","
-		end,
-	})
-
-	use({
-		"aserowy/tmux.nvim",
-		config = function()
-			require("tmux").setup()
-		end,
-	})
-
-	use({
-		"andweeb/presence.nvim",
-		config = function()
-			require("plugins.configs.others").presence()
-		end,
-	})
-
-	use({
-		"akinsho/toggleterm.nvim",
-		keys = { { "n", "<C-t>" }, { "n", "<leader>gt" } },
-		config = function()
-			require("plugins.configs.terminal")
-		end,
-		tag = "*",
-	})
-
-	use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
-
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup({})
-		end,
 	})
 
 	use({
@@ -312,22 +314,30 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Emmet for html snippets
 	use({
-		"goolord/alpha-nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
+		"mattn/emmet-vim",
+		ft = { "html", "javascript" },
 		config = function()
-			require("plugins.configs.alpha")
+			require("plugins.configs.emmet")
 		end,
 	})
 
+	-- Tmux integeration
 	use({
-		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
+		"aserowy/tmux.nvim",
 		config = function()
-			require("plugins.configs.trouble")
+			require("tmux").setup()
 		end,
 	})
-	if packer_bootstrap then
-		require("packer").sync()
-	end
+
+	-- Discord integration
+	use({
+		"andweeb/presence.nvim",
+		config = function()
+			require("plugins.configs.others").presence()
+		end,
+	})
+
+	use({ "dstein64/vim-startuptime", cmd = "StartupTime" })
 end)
