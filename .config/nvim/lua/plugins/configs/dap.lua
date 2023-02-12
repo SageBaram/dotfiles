@@ -13,34 +13,6 @@ require("dap-python").setup("$XDG_DATA_HOME/nvim/.virtualenvs/debugpy/bin/python
 require("dap-python").test_runner = "pytest"
 require("nvim-dap-virtual-text").setup({})
 
-vim.keymap.set("n", "<leader>dc", function()
-	dap.continue()
-end, {})
-vim.keymap.set("n", "<leader>dt", function()
-	dap.terminate()
-end, {})
-vim.keymap.set("n", "<leader>dn", function()
-	dap.step_over()
-end, {})
-vim.keymap.set("n", "<leader>di", function()
-	dap.step_into()
-end, {})
-vim.keymap.set("n", "<leader>do", function()
-	dap.step_out()
-end, {})
-vim.keymap.set("n", "<leader>b", function()
-	dap.toggle_breakpoint()
-end, {})
-vim.keymap.set("n", "<leader>B", function()
-	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end, {})
-vim.keymap.set("n", "<leader>lp", function()
-	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, {})
-vim.keymap.set("n", "<leader>dr", function()
-	dap.repl.toggle()
-end, {})
-
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end
@@ -55,7 +27,7 @@ dap.adapters.node2 = {
 	type = "executable",
 	command = "node",
 	args = {
-		os.getenv("XDG_DATA_HOME") .. "$XDG_DATA_HOME/nvim/mason/packages/node-debug2-adapter/out/src/nodeDebug.js",
+		os.getenv("XDG_DATA_HOME") .. "$XDG_DATA_HOME/nvim/mason/packages/vscode-node-debug2/out/src/nodeDebug.js",
 	},
 }
 
