@@ -7,7 +7,6 @@ telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
-				-- ["<C-x>"] = false,
 				["<C-q>"] = require("telescope.actions").send_to_qflist,
 				["<C-k>"] = require("telescope.actions").move_selection_previous,
 				["<C-j>"] = require("telescope.actions").move_selection_next,
@@ -79,9 +78,23 @@ telescope.setup({
 				},
 			},
 		},
+		file_browser = {
+			theme = "ivy",
+			-- disables netrw and use telescope-file-browser in its place
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+				},
+				["n"] = {
+					-- your custom normal mode mappings
+				},
+			},
+		},
 	},
 })
 
 telescope.load_extension("fzf")
-telescope.load_extension("ghq")
 telescope.load_extension("live_grep_args")
+telescope.load_extension("projects")
+telescope.load_extension("file_browser")
