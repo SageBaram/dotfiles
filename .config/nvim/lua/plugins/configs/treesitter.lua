@@ -1,3 +1,4 @@
+local present, ts_config = pcall(require, "nvim-treesitter.configs")
 if not present then
 	return
 end
@@ -5,7 +6,7 @@ end
 ts_config.setup({
 	ensure_installed = {
 		"markdown",
-		"markdown-inline",
+		"markdown_inline",
 		"vim",
 		"help",
 		"bash",

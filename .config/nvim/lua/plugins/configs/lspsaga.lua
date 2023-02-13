@@ -1,4 +1,3 @@
-local keymap = vim.keymap.set
 local status, saga = pcall(require, "lspsaga")
 if not status then
 	return
@@ -35,6 +34,7 @@ saga.setup({
 			quit = "<ESC>",
 			exec = "<CR>",
 		},
+		extend_gitsigns = true,
 	},
 	symbol_in_winbar = {
 		enable = false,
