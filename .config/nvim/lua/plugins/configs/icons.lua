@@ -16,6 +16,7 @@ end
 
 icons.setup({
 	override = {
+		c = override("", "c"),
 		html = override("", "html"),
 		css = override("", "css"),
 		js = override("", "js"),
@@ -31,13 +32,42 @@ icons.setup({
 		lua = override("", "lua"),
 		md = override("", "markdown"),
 		Dockerfile = override("", "Dockerfile"),
-		-- zip = override("", "zip"),
-		-- xz = override("", "xz"),
-		-- mp3 = override("", "mp3"),
-		-- mp4 = override("", "mp4"),
-		-- out = override("", "out"),
-		-- xlsx = override("", "excel"),
-		-- csv = override("", "csv"),
-		-- ipynb = override("", "ipynb"),
+
+		-- Adding icons to source no cterm
+		default_icon = {
+			icon = "",
+			name = "Default",
+		},
+		["robots.txt"] = {
+			icon = "ﮧ",
+			name = "robots",
+		},
+		zip = {
+			icon = "",
+			name = "zip",
+		},
+		xz = {
+			icon = "",
+			name = "xz",
+		},
+
+		mp3 = {
+			icon = "",
+			name = "mp3",
+		},
+
+		mp4 = {
+			icon = "",
+			name = "mp4",
+		},
+
+		out = {
+			icon = "",
+			name = "out",
+		},
 	},
 })
+
+-- xlsx = override("", "excel"),
+-- csv = override("", "csv"),
+-- ipynb = override("", "ipynb"),
