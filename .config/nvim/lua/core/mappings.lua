@@ -148,7 +148,8 @@ map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
 -- support tagstack C-t jump back
 map("n", "gj", "<Cmd>Lspsaga peek_definition<CR>")
 map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
-map("n", "gd", "<cmd>Lspsaga goto_type_definition<CR>")
+map("n", "gT", "<cmd>Lspsaga goto_type_definition<CR>")
+map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 
 -- Show line diagnostics
 -- You can pass argument ++unfocus to
