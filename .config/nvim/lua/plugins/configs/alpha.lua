@@ -61,6 +61,7 @@ dashboard.section.buttons.val = {
 	button("e", "  New File  ", ":ene <BAR> startinsert <CR>"),
 	button("f", "  Find File  ", ":Telescope find_files<CR>"),
 	button("o", "  Recent Files  ", ":Telescope oldfiles<CR>"),
+	button("p", "  Projects  ", ":Telescope projects<CR>"),
 	button("w", "  Find Word  ", ":Telescope live_grep_args<CR>"),
 	button("m", "  Bookmarks  ", ":Telescope marks<CR>"),
 	button("t", "  Themes  ", ":Telescope colorscheme<CR>"),
