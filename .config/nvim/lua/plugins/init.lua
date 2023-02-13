@@ -21,7 +21,6 @@ return packer.startup(function(use)
 
 	use({
 		"kyazdani42/nvim-web-devicons",
-		event = "VimEnter",
 		config = function()
 			require("plugins.configs.icons")
 		end,
