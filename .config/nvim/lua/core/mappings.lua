@@ -237,6 +237,7 @@ map("n", "<leader>hp", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>hd", ":Gitsigns diffthis<CR>")
 map("n", "<leader>td", ":Gitsigns toggle_deleted<CR>")
+
 vim.keymap.set("n", "<leader>hb", function()
 	gs.blame_line({ full = true })
 end)
