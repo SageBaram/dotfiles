@@ -1,0 +1,3 @@
+abbr mux="tmuxinator"
+abbr tn="tmux new -s (pwd | sed 's/.*\///g')"
+abbr createnv="python3 -m venv"
