@@ -5,14 +5,37 @@ add_newline = false
 [line_break]
 disabled = true
 
-# Change the default > to ->
 [character]
-success_symbol = "[ﭲ](bold green)"     
-error_symbol = "[﵄](bold red)"    
+success_symbol = "[](green)"
+error_symbol = "[](red)"
 vicmd_symbol = "[](green)"
 
-# Change default conda prompt
-[conda]
-format = "[🅔 $environment ](green)"
+[package]
+disabled = true
 
+[username]
+disabled = true
 
+[hostname]
+disabled = true
+
+[aws]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[git_branch]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_metrics]
+disabled = true
+
+[git_status]
+disabled = true
