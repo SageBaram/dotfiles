@@ -26,11 +26,9 @@ function _list_scripts() {
 
 function list_directories() {
     echo $XDG_CONFIG_HOME
-    echo $XDG_CONFIG_HOME/nvim/lua
-    echo $XDG_DATA_HOME/nvim/site/pack/packer/opt/
-    echo ~/self/scripts/
-    ghq list -p
-    \ls -ad ~/workspace/college/current/*/*/* |grep -v \.git
+    echo ~/workspace/self/scripts/
+    \ls -ad $XDG_CONFIG_HOME/nvim/lua/*/*/* |grep -v \.git
+    \ls -ad $XDG_CONFIG_HOME/nvim/lua/*/* |grep -v \.git
 }
 
 function list_scripts() {
@@ -57,9 +55,6 @@ lg()
     fi
 }
 
-
-
- 
 zle -N change_dir
 bindkey "^f" change_dir
 
