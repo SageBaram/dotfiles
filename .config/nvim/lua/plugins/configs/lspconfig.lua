@@ -19,9 +19,11 @@ local function on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+	if client.server_capabilities.signatureHelpProvider then
+		vim.keymap.set("n", "<leader>s", vim.lsp.buf.signature_help, { remap = false, silent = true })
+	end
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -104,7 +106,7 @@ vim.notify = function(msg, log_level)
 end
 
 mason_lspconfig.setup({
-	ensure_installed = { "pyright", "tsserver", "html", "cssls", "emmet_ls", "lua_ls" },
+	ensure_installed = { "pyright", "tsserver", "html", "cssls", "emmet_ls", "lua_ls", "bashls" },
 })
 
 lspconfig.tsserver.setup({
@@ -181,7 +183,7 @@ lspconfig.pyright.setup({
 lspconfig.bashls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	cmd = { "start", "bash-language-server" },
+	cmd = { "bash-language-server", "start" },
 	cmd_env = { GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)" },
 	filetypes = { "sh" },
 })
