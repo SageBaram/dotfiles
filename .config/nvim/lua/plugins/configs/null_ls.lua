@@ -13,7 +13,7 @@ mason_null_ls.setup({
 })
 
 local builtins = null_ls.builtins
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+-- local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
@@ -29,20 +29,21 @@ null_ls.setup({
 			end, { buffer = bufnr, desc = "[lsp] format" })
 
 			-- format on save
-			vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-			vim.api.nvim_create_autocmd(event, {
-				buffer = bufnr,
-				group = group,
-				callback = function()
-					vim.lsp.buf.format({
-						filter = function()
-							return client.name == "null-ls"
-						end,
-						vim.lsp.buf.format({ bufnr = bufnr }),
-					})
-				end,
-				desc = "[lsp] format on save",
-			})
+			-- vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+			-- vim.api.nvim_create_autocmd(event, {
+			-- 	buffer = bufnr,
+			-- 	group = group,
+			-- 	callback = function()
+			-- 		vim.lsp.buf.format({
+			-- 			filter = function()
+			-- 				return client.name == "null-ls"
+			-- 			end,
+			-- 			bufnr = bufnr,
+			-- 			async = async,
+			-- 		})
+			-- 	end,
+			-- 	desc = "[lsp] format on save",
+			-- })
 		end
 
 		if client.supports_method("textDocument/rangeFormatting") then
