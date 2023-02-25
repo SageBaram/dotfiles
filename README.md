@@ -426,6 +426,12 @@ Adding commands:<br>
 You can use space or any other key code that will set as the prefix. Add a key like `W` (web).<br>
 As for the action I use Open URL so it won't launch the application if it's on like so: `file:///Applications/Google%20Chrome.app/`.
 
+To install it via brew:
+```
+brew install --cask spacelauncher
+```
+
+Check out their website for more information : [SpaceLauncher.com](https://spacelauncherapp.com/)
 
 *For any other application please note, the triple slash is important for it to work & if there is a space between the name use `%20`.*
 
