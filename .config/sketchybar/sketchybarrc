@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+source "$HOME/.config/sketchybar/argb_colors.sh"
+
+ITEM_DIR="$HOME/.config/sketchybar/items/"
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins/"
+
+FONT="SFMono Nerd Font"
+TEXT_FONT="SFMono Nerd Font:Regular:14.0"
+ICON_FONT="SFMono Nerd Font:Regular:18.0"
+
+PADDING=25
+
+# ------- Basic Config ----------
+#0XFF1A1A29
+sketchybar --bar color="$BASE"
+sketchybar --bar border_color="$BASE"
+sketchybar --bar border_width=1
+sketchybar --bar opacity=0.9
+sketchybar --bar position=bottom
+sketchybar --bar height=40
+sketchybar --bar margin=15
+sketchybar --bar blur_radius=100
+sketchybar --bar shadow=on
+sketchybar --bar y_offset=5
+sketchybar --bar corner_radius=10
+sketchybar --bar topmost=on
+sketchybar -m --add event yabai_window
+
+####### LEFT
+source "$ITEM_DIR/space.sh"
+
+####### CENTER
+source "$ITEM_DIR/window_title.sh"
+source "$ITEM_DIR/spotify.sh"
+
+####### RIGHT
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/time.sh"
+source "$ITEM_DIR/date.sh"
+source "$ITEM_DIR/weather.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/ram.sh"
+source "$ITEM_DIR/yabai_float.sh"
+
+# Might be used 
+# Etc : ﮟ  ﬥ
+# Shapes: 喝 ﬘  
+# Social:      聆
+# Gaming icons:   調 
+# Study: ﯈  拾 龎
+
+sketchybar --update
+echo "sketchybar configuration loaded..."
