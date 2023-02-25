@@ -9,89 +9,81 @@ In this repo, I organize all of my MacOS configurations and share the tools and 
 <!--toc:start-->
 - [Dotfiles & Tools](#dotfiles-tools)
   - [Table of Contents](#table-of-contents)
-    - [Disclaimers](#disclaimers)
-    - [Quickstart - NOT TESTED YET](#quickstart-not-tested-yet)
-        - [TLDR (Bootstrap explained):](#tldr-bootstrap-explained)
-        - [Installation with Bootstrap script](#installation-with-bootstrap-script)
-    - [Manual Installation](#manual-installation)
-      - [Homebrew](#homebrew)
-      - [Zsh](#zsh)
-      - [Nvim](#nvim)
-        - [General UI](#general-ui)
-        - [Navigation](#navigation)
-        - [LSP & Related](#lsp-related)
-        - [Git Integration](#git-integration)
-        - [Utilities and Text manipulation](#utilities-and-text-manipulation)
-        - [Completion Engines](#completion-engines)
-        - [Testing & Debugging](#testing-debugging)
-        - [Web development essentials](#web-development-essentials)
-        - [Integrations & Miscellanious](#integrations-miscellanious)
-      - [Tmux](#tmux)
-      - [Git](#git)
-      - [Alfred](#alfred)
-  - [For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).](#for-any-questions-regarding-the-configurations-feel-free-to-open-an-issuehttpsgithubcomjustsagepublic-dotfilesissuesnew)
+  - [Disclaimers](#disclaimers)
+    - [Homebrew](#homebrew)
+    - [Alacritty](#alacritty)
+    - [Zsh](#zsh)
+    - [Nvim](#nvim)
+      - [General UI](#general-ui)
+      - [Navigation](#navigation)
+      - [LSP & Related](#lsp-related)
+      - [Git Integration](#git-integration)
+      - [Utilities and Text manipulation](#utilities-and-text-manipulation)
+      - [Completion Engines](#completion-engines)
+      - [Testing & Debugging](#testing-debugging)
+      - [Web development essentials](#web-development-essentials)
+      - [Integrations & Miscellanious](#integrations-miscellanious)
+    - [Tmux](#tmux)
+    - [Yabai](#yabai)
+    - [SKHD](#skhd)
+    - [Sketchybar](#sketchybar)
+      - [Enabling/Disabling SIP (System Integrity Protection)](#enablingdisabling-sip-system-integrity-protection)
+    - [Alfred](#alfred)
+    - [Git](#git)
+    - [SpaceLauncher](#spacelauncher)
+      - [For any questions regarding the configurations feel free to open an [issue](https://github.com/SageBaram/dotfiles/issues/new).](#for-any-questions-regarding-the-configurations-feel-free-to-open-an-issuehttpsgithubcomsagebaramdotfilesissuesnew)
 <!--toc:end-->
 
   For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
 
 ---
-
-### Disclaimers
+## Disclaimers
 
 - This repo contains years of experience of my personal workflow, it may not suit your personal needs but feel free to grab whatever is useful to you.
-- If you are running Linux or Windows, do not use the <strong>bootstrap script</strong>.
-- If any plugin yields an error please file an [issue](https://github.com/SageBaram/dotfiles/issues/new).
+- Linux or Windows users please note - some features may not work for you / require some additional setup / break your machine.
+- In case something happens to your machine because of an application mentioned here - head over to their repository and file an issue on the topic.
+- I do not claim any responsibility if these application cause harm to your computer, these applications are maintained by other developers.
 
-- I do not claim any responsibility if these application cause harm to your computer, these are public applications which are maintained by other developers;
-- In case something happens because of an application mentioned here - head over to their repository and file an issue on the topic.
+<!-- ### Quickstart - NOT TESTED YET -->
+<!---->
+<!-- <details> -->
+<!-- <summary>Bootstrap is yet tested, use at your own risk.</summary> -->
+<!---->
+<!-- [Bootstrap script](https://github.com/SageBaram/dotfiles/blob/master/workspace/self/scripts/.cfg-install.sh) included. Please read the script carefully to understand what software you are installing. -->
+<!---->
+<!-- > ##### TLDR (Bootstrap explained): -->
+<!---->
+<!-- > - **SAFE ON FRESH INSTALL**.<br> -->
+<!---->
+<!-- > - Backing up existing bare repository folder `.cfg` or creating one and setting git with the work tree parameters and checkout to set a bare repository for the dotfiles.<br> -->
+<!---->
+<!-- > - Installing Brew and Zshell.<br> -->
+<!---->
+<!-- > - Installing Brew dependencies **(which I use in my workflow, it may clash with either existing applications or conflicting dependencies)**.<BR> -->
+<!---->
+<!-- > - Installing Starship prompt.<br> -->
+<!---->
+<!-- > - Installing Packer.nvim plugin manager.<br> -->
+<!---->
+<!-- > - Removing existing `packer_compiled.lua` and syncing all plugins with `PackerSync`.<br> -->
+<!---->
+<!-- ##### Installation with Bootstrap script -->
+<!---->
+<!-- - Clone the repostitory via SSH or HTTPS, cd to the location of the repo and navigate to `./workspace/self/scripts` where the boostrap file is located.<br> -->
+<!-- - Make the script executable with chmod and run the script. -->
+<!---->
+<!-- ```bash -->
+<!-- git clone https://github.com/SageBaram/dotfiles.git -->
+<!---->
+<!-- cd path/to/repo/workspace/self/scripts -->
+<!---->
+<!-- chmod +x .cfg-install -->
+<!---->
+<!-- ./cfg-install -->
+<!-- ``` -->
+<!-- </details> -->
 
-### Quickstart - NOT TESTED YET
-
-<details>
-<summary>Bootstrap is yet tested, use at your own risk.</summary>
-
-[Bootstrap script](https://github.com/SageBaram/dotfiles/blob/master/workspace/self/scripts/.cfg-install.sh) included. Please read the script carefully to understand what software you are installing.
-
-> ##### TLDR (Bootstrap explained):
-
-> - **SAFE ON FRESH INSTALL**.<br>
-
-> - Backing up existing bare repository folder `.cfg` or creating one and setting git with the work tree parameters and checkout to set a bare repository for the dotfiles.<br>
-
-> - Installing Brew and Zshell.<br>
-
-> - Installing Brew dependencies **(which I use in my workflow, it may clash with either existing applications or conflicting dependencies)**.<BR>
-
-> - Installing Starship prompt.<br>
-
-> - Installing Packer.nvim plugin manager.<br>
-
-> - Removing existing `packer_compiled.lua` and syncing all plugins with `PackerSync`.<br>
-
-##### Installation with Bootstrap script
-
-- Clone the repostitory via SSH or HTTPS, cd to the location of the repo and navigate to `./workspace/self/scripts` where the boostrap file is located.<br>
-- Make the script executable with chmod and run the script.
-
-```bash
-git clone https://github.com/SageBaram/dotfiles.git
-
-cd path/to/repo/workspace/self/scripts
-
-chmod +x .cfg-install
-
-./cfg-install
-```
-</details>
-
-
-### Manual Installation
-
-Handpicked a few applications which are a must on every install.
-
----
-
-#### Homebrew
+### Homebrew
 
 Homebrew a package manager for MacOS. It makes downloading, installing, and version managing of small cli programs & enterprise applications a breeze.
 
@@ -105,9 +97,22 @@ Homebrew a package manager for MacOS. It makes downloading, installing, and vers
 - Install applications with `brew --cask install <application-name>`.
 - Use `brew --help` for more useful commands and info.
 
----
+![homebrew](assets/hombrew.png)
 
-#### Zsh
+---
+### Alacritty
+
+Alacritty is a modern terminal emulator allowing extensive configuration, supporting BSD, Linux, MacOS and Windows.
+It is fast, snappy, and has better UI/Keymap options compare to other terminal emulators I have used.
+
+```bash
+brew install alacritty
+```
+
+Check out the [repository](https://github.com/alacritty/alacritty) for [sane defaults](https://github.com/alacritty/alacritty/blob/master/alacritty.yml) and more info.
+
+---
+### Zsh
 
 My shell of choice, superior to bash due to it's ease of use and extensiblility (IMO).
 
@@ -146,10 +151,10 @@ export PATH="$XDG_CONFIG_HOME/yarn/global/node_modules/bin:$PATH"
 
 ```
 
+![zsh](assets/z-shell.png)
+
 ---
-
-
-#### Nvim
+### Nvim
 
 I've been using Vim/Neovim for quite a while now and this repo contains my maintained configurations.<br>
 
@@ -173,7 +178,7 @@ Make sure to back up any previous configurations before doing so.
 > This setup is working on `Neovim 0.8.2`
 > All plugins listed below do not require nighly version (development verion).
 
-##### General UI
+#### General UI
 
 - [alpha](https://github.com/goolord/alpha-nvim) - dashboard on startup.
 - [catppuccin](https://github.com/catppuccin/nvim) - colorscheme of choice.
@@ -184,19 +189,18 @@ Make sure to back up any previous configurations before doing so.
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - provides better syntax highlighting, folding etc.
 - [web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - provides icons to statusline, nvimtree etc. <u>**requires nerd-font**</u>.
 
-##### Navigation
+#### Navigation
 
 - [nvim-tree](https://github.com/kyazdani42/nvim-tree.lua) - file explorer in tree view.
 - [telescope.nvim](https://github.com/telescope.nvim) - fuzzy finder over lists. super useful, similar to fzf but far more extensible.<br>
  [extensions](https://github.com/nvim-telescope): 
 	- [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - provides fzf search functionalities.
 	- [telescope-live-grep-args](https://github.com/nvim-telescope/telescope-live-grep-args.nvim) - allows to pass arguments to live grep.
-	- [telescope-ghq](https://github.com/nvim-telescope/telescope-ghq.nvim) - ghq integration for repository management.
 - [tmux](https://github.com/aserowy/tmux.nvim) - tmux integration with neovim.
 - [harpoon](https://github.com/ThePrimeagen/harpoon) - better mark system to switch between frequent files.
 - [project.nvim](https://github.com/ahmedkhalf/project.nvim) - project management integrated with telescope.
 
-##### LSP & Related
+#### LSP & Related
 
 - [mason](https://github.com/williamboman/mason.nvim) - lsp,dap,linter,formatter installer. Mason has external API plugins for each installer:
   - [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
@@ -208,14 +212,14 @@ Make sure to back up any previous configurations before doing so.
 - [lspsaga](https://github.com/glepnir/lspsaga.nvim) - a frontend ui to lsp capabilities.
 - [lspkind](https://github.com/onsails/lspkind-nvim) - provides icons/naming to different kinds of lsp completion sources.
 
-##### Git Integration
+#### Git Integration
 
 - [fugitive](https://github.com/tpope/vim-fugitive) - git integration with vim.
 - [rhubarb](https://github.com/tpope/vim-rhubarb) - github integration with vim.
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) - shows git changes in gutter.
 - [diffview](https://github.com/sindrets/diffview.nvim) - git diff viewer of choice.
 
-##### Utilities and Text manipulation
+#### Utilities and Text manipulation
 
 - [comment](https://github.com/numToStr/Comment.nvim) - comment line or block. filetype sensitive, can work with multisyntax files (vue/jsx etc).
 - [neogen](https://github.com/danymat/neogen) - documentation engine.
@@ -227,26 +231,26 @@ Make sure to back up any previous configurations before doing so.
 - [undotree](https://github.com/mbbill/undotree) - visual tree of your undos.
 - [trouble](https://github.com/folke/trouble.nvim) - pretty lists for diagnostics, references, telescope results, quickfix and location lists.
 
-##### Completion Engines
+#### Completion Engines
 
 - [cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion engine.
-	- [sources I use in the config](https://github.com/SageBaram/dotfiles/blob/046ba2cc8f48173643fb919b702043f570e5220c/.config/nvim/lua/plugins/init.lua#L127).
+  - [sources I use in the config](https://github.com/SageBaram/dotfiles/blob/046ba2cc8f48173643fb919b702043f570e5220c/.config/nvim/lua/plugins/init.lua#L127).
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - snippet engine support plugin.
 - [luasnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine.
 
-##### Testing & Debugging
+#### Testing & Debugging
 
 - [neotest](https://github.com/nvim-neotest/neotest) - connects different test adapters and provides a frontend for test environments.
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) - debug adapter protocol, allows to attach debuggers to applications, set breakpoints etc.
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - full fledged ui for debugging.
 
-##### Web development essentials
+#### Web development essentials
 
 - [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua) - provides color highlighting for hex/rgb in text.
 - [emmet-vim](https://github.com/mattn/emmet-vim) - emmet for html,css abbreviations.
 - [markdown-preview](https://github.com/iamcco/markdown-preview.nvim) - markdown live-server.
 
-##### Integrations & Miscellanious
+#### Integrations & Miscellanious
 
 - [impatient](https://github.com/lewis6991/impatient.nvim) - improved startuptime.
 - [startuptime](https://github.com/dstein64/vim-startuptime) - show startuptime results graphically.
@@ -256,7 +260,7 @@ Make sure to back up any previous configurations before doing so.
 
 
 **NOTICE:**<br>
-Check out the provided links before mindlessly using the configurations for further information and any necessary dependencies it may require.
+Check out the provided links before mindlessly using the configurations for further information about the plugins, any necessary dependencies it may require is listed in each repo.
 
 If you are a beginner to Vim I strongly recommend using the built in tutor to get familiar with vim concepts.<br>
 When in nvim use `:tutor`.
@@ -264,9 +268,10 @@ When in nvim use `:tutor`.
 If you wish to understand the configurations or better, modify/extend them, learning basic `lua` is necessary.
 There are many guides out there, but this covers most of what you need: [nvim-lua-guide](https://github.com/nanotee/nvim-lua-guide).
 
----
+![neovim](assets/neovim.png)
 
-#### Tmux
+---
+### Tmux
 
 Terminal multiplexer, session manager, a tool any terminal user needs. Using multiple split panes, windows and sessions in a safe environment (supports session reload).
 
@@ -285,22 +290,17 @@ There are other useful settings for vim in [tmux.conf](https://github.com/SageBa
 # Sets ctrl + h,j,k,l to move between panes with awareness of vim splits.
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
-bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h' { if -F '#{pane_at_left}' '' 'select-pane -L' }
-bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j' { if -F '#{pane_at_bottom}' '' 'select-pane -D' }
-bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' { if -F '#{pane_at_top}' '' 'select-pane -U' }
-bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' { if -F '#{pane_at_right}' '' 'select-pane -R' }
-tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+bind -n 'C-h' if-shell "$is_vim" 'send-keys C-h' { if -F '#{pane_at_left}' '' 'select-pane -L' }
+bind -n 'C-j' if-shell "$is_vim" 'send-keys C-j' { if -F '#{pane_at_bottom}' '' 'select-pane -D' }
+bind -n 'C-k' if-shell "$is_vim" 'send-keys C-k' { if -F '#{pane_at_top}' '' 'select-pane -U' }
+bind -n 'C-l' if-shell "$is_vim" 'send-keys C-l' { if -F '#{pane_at_right}' '' 'select-pane -R' }
 
 # Sets ctrl + h,j,k,l for copy mode in tmux.
-bind-key -T copy-mode-vi 'C-h' select-pane -L
-bind-key -T copy-mode-vi 'C-j' select-pane -D
-bind-key -T copy-mode-vi 'C-k' select-pane -U
-bind-key -T copy-mode-vi 'C-l' select-pane -R
-bind-key -T copy-mode-vi 'C-\' select-pane -l
+bind -T copy-mode-vi 'C-h' select-pane -L
+bind -T copy-mode-vi 'C-j' select-pane -D
+bind -T copy-mode-vi 'C-k' select-pane -U
+bind -T copy-mode-vi 'C-l' select-pane -R
+bind -T copy-mode-vi 'C-\' select-pane -l
 
 # Resizing panes using alt/option key + h,j,k,l
 bind -n 'M-h' if-shell "$is_vim" 'send-keys M-h' 'resize-pane -L 1'
@@ -309,29 +309,89 @@ bind -n 'M-k' if-shell "$is_vim" 'send-keys M-k' 'resize-pane -U 1'
 bind -n 'M-l' if-shell "$is_vim" 'send-keys M-l' 'resize-pane -R 1'
 
 # Resizing windows in copy mode.
-bind-key -T copy-mode-vi M-h resize-pane -L 1
-bind-key -T copy-mode-vi M-j resize-pane -D 1
-bind-key -T copy-mode-vi M-k resize-pane -U 1
-bind-key -T copy-mode-vi M-l resize-pane -R 1
+bind -T copy-mode-vi M-h resize-pane -L 1
+bind -T copy-mode-vi M-j resize-pane -D 1
+bind -T copy-mode-vi M-k resize-pane -U 1
+bind -T copy-mode-vi M-l resize-pane -R 1
 
 # Copy mode visual selection and yank.
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-selection
 ```
 
+---
+### Yabai
+
+Tiling window manager in MacOS.
+It's an extension to the built-in window manager of macOS.
+With the combination of Mission Control and SKHD which enables to set user-defined
+keyboard shortcuts. 
+
+```bash
+brew install koekeishiya/formulae/yabai
+brew services start yabai
+```
+
+After updating the configuration you need to restart the service.
+```bash
+brew services restart yabai
+```
+
+Check out the [repository](https://github.com/koekeishiya/yabai).
+
+### SKHD
+
+A simple hotkey daemon for macOS which allows setting user-defined keyboard shortcuts
+for macOS. You can set Yabai's shortcuts with it and much more.
+
+```bash
+brew install koekeishiya/formulae/skhd
+brew services start skhd
+```
+
+After updating the configuration you need to restart the service.
+```bash
+brew services restart skhd
+```
+
+Check out the [repository](https://github.com/koekeishiya/skhd).
+
+### Sketchybar
+
+A dynamic programmable menu bar. You can add any existing menu bar items or create your own.
+Using zsh/bash scripts I was able to customize the bar to fit my needs. 
+Showing current active space I am on, current window title, spotify current active song, battery, date, time weather, and ram/cpu.
+
+```bash
+brew tap FelixKratz/formulae
+brew install sketchybar
+
+brew services start sketchybar
+```
+
+After updating the configuration you need to restart the service.
+```bash
+brew services restart sketchybar
+```
+
+Check out the [repository](https://github.com/FelixKratz/SketchyBar).
+
+#### Enabling/Disabling SIP (System Integrity Protection)
+
+System Integrity Protection (SIP) in macOS protects the entire system by preventing the execution of unauthorized code.
+The system automatically authorizes apps that the user downloads from the App Store.
+The system also authorizes apps that a developer notarizes and distributes directly to users.
+
+*The system prevents the launching of all other apps by default.*
+These apps are usually third party software such as Yabai, SKHD and Sketchybar.
+My personal configuration require SIP to be disabled for it to fully work.
+
+*Some features will not work with SIP enabled.*
+
+[How to Disable/Enable SIP by Apple](https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection)
 
 ---
-
-#### Git
-
-Version control for all purposes. Typed notes, software and configurations are all managed via git.
-
-- Install via `brew install git`
-- [commitizen/cz-cli](https://github.com/commitizen/cz-cli) - commit parser.
-
----
-
-#### Alfred
+### Alfred
 
 Spotlight alternative. It's an incredible productivity tool!
 
@@ -351,6 +411,35 @@ Alfred offers multiple features such as:
 This is an essential productivity tool I have to install right away on a mac.<br>
 There is a paid version which is not mandatory but I highly recommend it to experience the full power of Alfred.
 
----
+![alfred](assets/alfred.png)
 
-## For any questions regarding the configurations feel free to open an [issue](https://github.com/JustSage/public-dotfiles/issues/new).
+---
+### Git
+
+Version control for all purposes. Typed notes, software and configurations are all managed via git.
+
+- Install via `brew install git`
+- [commitizen/cz-cli](https://github.com/commitizen/cz-cli) - commit parser.
+- [gitmux](https://github.com/arl/gitmux) - git info for tmux statusbar.
+
+![git](assets/git.png)
+
+---
+### SpaceLauncher
+
+A macos application that allows spacebar modifications and launch software/simulate commands.<br>
+Since I use a moonlander and my spacebar when held changes to a different layout, I use `,` as the prefix instead.
+
+For example holding `,` -> `W` launches chrome or focuses chrome window if there is one available.<br>
+It works really well with Yabai and highly recommended if you have a multi-monitor setup like myself.
+
+Adding commands:<br>
+You can use space or any other key code that will set as the prefix. Add a key like `W` (web).<br>
+As for the action I use Open URL so it won't launch the application if it's on like so: `file:///Applications/Google%20Chrome.app/`.
+
+![SpaceLauncher-sample-1](assets/spacelauncher-sample-1.png)
+
+*For any other application please note, the triple slash is important for it to work & if there is a space between the name use `%20`.*
+
+---
+#### For any questions regarding the configurations feel free to open an [issue](https://github.com/SageBaram/dotfiles/issues/new).
