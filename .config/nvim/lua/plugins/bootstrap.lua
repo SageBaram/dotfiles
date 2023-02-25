@@ -9,6 +9,7 @@ if not vim.loop.fs_access(install, "R") then
 	if success then
 		vim.cmd.packadd("packer.nvim")
 	end
+
 	packer = require("packer")
 	packer.sync()
 end
@@ -29,6 +30,10 @@ packer.init({
 	},
 	auto_clean = true,
 	compile_on_sync = true,
+	config = {
+		compile_path = vim.fn.stdpath("config") .. "/lua/plugin/packer_compiled.lua",
+		package_root = vim.fn.stdpath("data") .. "site/pack/",
+	},
 })
 
 return packer
