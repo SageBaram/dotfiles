@@ -38,10 +38,6 @@ icons.setup({
 			icon = "",
 			name = "Default",
 		},
-		["robots.txt"] = {
-			icon = "ﮧ",
-			name = "robots",
-		},
 		zip = {
 			icon = "",
 			name = "zip",
@@ -65,9 +61,22 @@ icons.setup({
 			icon = "",
 			name = "out",
 		},
-	},
+        xlsx = {
+            icon ="",
+            name ="excel",
+        },
+        csv = {
+           icon = "",
+           name = "csv",
+        },
+        ipynb = {
+           icon ="",
+           name = "ipynb",
+        },
+		["robots.txt"] = {
+			icon = "ﮧ",
+			name = "robots",
+		},
+    }
 })
 
--- xlsx = override("", "excel"),
--- csv = override("", "csv"),
--- ipynb = override("", "ipynb"),
