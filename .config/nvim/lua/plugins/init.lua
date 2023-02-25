@@ -178,12 +178,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({
-		"theprimeagen/harpoon",
-		config = function()
-			require("plugins.configs.harpoon")
-		end,
-	})
+	use({ "theprimeagen/harpoon", })
 
 	use({
 		"ahmedkhalf/project.nvim",
