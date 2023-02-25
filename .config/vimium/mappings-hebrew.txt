@@ -1,0 +1,60 @@
+-- Hebrew Support
+
+map  ח scrollDown
+map  ל scrollUp
+map  י scrollLeft
+map  ך scrollRight
+map  עע scrollToTop
+map  זH scrollToLeft
+map  זL scrollToRight
+map  <с-ק> scrollDown
+map  <с-ט> scrollUp
+
+map  ג scrollPageDown
+map  ו scrollPageUp
+map  ר reload
+map  עד toggleViewSource
+
+map  ן enterInsertMode
+
+map  עו goUp
+map  עU goToRoot
+
+map  ען focusInput
+
+map  כ LinkHints.activateMode
+map  <א-כ> LinkHints.activateModeWithQueue
+
+map  . enterFindMode
+map  מ performFind
+
+# goPrevious and goNext are tricky because the Hebrew mapping overriding the English one
+#map  ]] goPrevious
+#map  [[ goNext
+
+map  טט copyCurrentUrl
+map  טכ LinkHints.activateModeToCopyLinkUrl
+
+map  פ openCopiedUrlInCurrentTab
+
+map  עא nextTab
+map  עT previousTab
+map  ע0 firstTab
+map  ע$ lastTab
+
+map  א createTab
+map  טא duplicateTab
+map  ס removeTab
+
+map  ם Vomnibar.activate
+map  עק Vomnibar.activateEditUrl
+map  נ Vomnibar.activateBookmarks
+
+map  עכ nextFrame
+
+map  צ Marks.activateCreateMode
+map  ; Marks.activateGotoMode
+
+map  <א-פ> togglePinTab
+
+map  ה enterVisualMode
