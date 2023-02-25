@@ -31,6 +31,7 @@ M.colorizer = function()
 	vim.defer_fn(function()
 		require("colorizer").attach_to_buffer(0)
 	end, 0)
+	vim.cmd("ColorizerAttachToBuffer")
 end
 
 M.presence = function()
@@ -69,6 +70,11 @@ M.blankline = function()
 		space_char_blankline = " ",
 	}
 	blankline.setup(opts)
+end
+
+M.undotree = function()
+	vim.g.undotree_WindowLayout = 4
+	vim.g.undotree_DiffpanelHeight = 20
 end
 
 return M
