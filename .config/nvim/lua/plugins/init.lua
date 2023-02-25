@@ -2,11 +2,14 @@ local _packer, packer = pcall(require, "plugins.bootstrap")
 if not _packer then
 	return false
 end
-
 return packer.startup(function(use)
 	-- Faster startup speeds
-	use({ "lewis6991/impatient.nvim" })
-
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient")
+		end,
+	})
 	-- Plugin manager
 	use({ "wbthomason/packer.nvim" })
 
@@ -52,7 +55,6 @@ return packer.startup(function(use)
 
 	use({
 		"norcalli/nvim-colorizer.lua",
-		event = "BufRead",
 		ft = { "css", "javascript", "html", "reactjavascript", "markdown" },
 		config = function()
 			require("plugins.configs.others").colorizer()
@@ -104,7 +106,6 @@ return packer.startup(function(use)
 	use({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
-		event = "BufRead",
 		after = "nvim-lspconfig",
 		config = function()
 			require("plugins.configs.lspsaga")
@@ -266,7 +267,14 @@ return packer.startup(function(use)
 	})
 
 	-- Essentials
-	use({ "mbbill/undotree", keys = { "n", "<leader>u" } })
+	use({
+		"mbbill/undotree",
+		config = function()
+			require("plugins.configs.others").undotree()
+		end,
+		keys = { "n", "<leader>u" },
+	})
+
 	use({ "tpope/vim-surround" })
 	use({ "tpope/vim-repeat" })
 	use({ "andymass/vim-matchup", event = "CursorMoved" })
