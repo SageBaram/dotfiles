@@ -21,12 +21,24 @@ case "${condition}" in
     "overcast")
         icon=" "
     ;;
+    "rain")
+        icon=" "
+    ;;
     "lightrain")
+        icon=" "
+    ;;
+    "lightrain,rain")
         icon=" "
     ;;
     "clear")
 	icon=""
 	;;
+"widespreaddust")
+	icon=""
+	;;
+"rainwiththunderstorm")
+        icon=""
+        ;;
     *)
         icon="$condition"
     ;;
