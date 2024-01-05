@@ -1,10 +1,7 @@
 live_config_reload: true
-
 env:
   TERM: xterm-256color
-
 history: 10000
-
 window:
   opacity: 0.75
   padding:
@@ -12,16 +9,14 @@ window:
     y: 16
   dynamic_padding: false
   decorations: buttonless
-
 font:
   normal:
     family: "SFMono Nerd Font"
-    style: Regular 
+    style: Regular
   bold:
     family: "SFMono Nerd Font"
     style: Bold
   size: 18
-
 cursor:
   style:
     shape: Block
@@ -30,66 +25,64 @@ cursor:
     shape: Block
     blinking: Always
   blink_interval: 300
-
 colors:
   transparent_background_colors: true
   draw_bold_text_with_bright_colors: true
   use_thin_strokes: true
-
 import:
   - ~/.config/alacritty/themes/catppuccin/catppuccin-mocha.yml
-
 key_bindings:
   # Select window 1-9
-  - { key: Key1, mods: Command, chars: "\x02\x31" }
-  - { key: Key2, mods: Command, chars: "\x02\x32" }
-  - { key: Key3, mods: Command, chars: "\x02\x33" }
-  - { key: Key4, mods: Command, chars: "\x02\x34" }
-  - { key: Key5, mods: Command, chars: "\x02\x35" }
-  - { key: Key6, mods: Command, chars: "\x02\x36" }
-  - { key: Key7, mods: Command, chars: "\x02\x37" }
-  - { key: Key8, mods: Command, chars: "\x02\x38" }
-  - { key: Key9, mods: Command, chars: "\x02\x39" }
+  - {key: Key1, mods: Command, chars: "\x021"}
+  - {key: Key2, mods: Command, chars: "\x022"}
+  - {key: Key3, mods: Command, chars: "\x023"}
+  - {key: Key4, mods: Command, chars: "\x024"}
+  - {key: Key5, mods: Command, chars: "\x025"}
+  - {key: Key6, mods: Command, chars: "\x026"}
+  - {key: Key7, mods: Command, chars: "\x027"}
+  - {key: Key8, mods: Command, chars: "\x028"}
+  - {key: Key9, mods: Command, chars: "\x029"}
   # Rename the current tmux window
-  - { key: Comma, mods: Command, chars: "\x02\x2c" }
+  - {key: Comma, mods: Command, chars: "\x02,"}
   # Enter the tmux command prompt
-  - { key: Semicolon, mods: Command, chars: "\x02\x3a"}
+  - {key: Semicolon, mods: Command, chars: "\x02:"}
   # Change to the next tmux window
-  - { key: RBracket, mods: Command|Shift, chars: "\x02\x6e" }
+  - {key: RBracket, mods: Command|Shift, chars: "\x02n"}
   # Change to the previous tmux window
-  - { key: LBracket, mods: Command|Shift, chars: "\x02\x70" }
-  # Switch to last tmux session
-  - { key: LBracket, mods: Command, chars: "\x02\x5b" }
-  - { key: L, mods: Command|Shift, chars: "\x02\x4c" }
+  - {key: LBracket, mods: Command|Shift, chars: "\x02p"}
+  # Enter copy mode
+  - {key: C, mods: Command, chars: "\x02["}
+  # Toggle between sessions
+  - {key: G, mods: Command, chars: "\x02L"}
   # Split the current pane into two, left and right.
-  - { key: N, mods: Command|Shift, chars: "\x02\x68" }
+  - {key: N, mods: Command|Shift, chars: "\x02h"}
   # Split the current pane into two, top and bottom.
-  - { key: N, mods: Command, chars: "\x02\x76" }
+  - {key: N, mods: Command, chars: "\x02v"}
+  # Sessions window
+  - {key: K, mods: Command, chars: "\x02s"}
   # Type <escape>:w<enter> to save neovim
-  - { key: S, mods: Command, chars: "\x1b\x3a\x77\x0a" }
-    # Save and close vim buffer or q! out of it <escape>:wq!<enter>
-  - { key: S, mods: Command|Shift, chars: "\x1b\x3a\x77\x71\x21\x0a" }
+  - {key: S, mods: Command, chars: "\e:w\n"}
+  # Save and close vim buffer or q! out of it <escape>:wq!<enter>
+  - {key: S, mods: Command|Shift, chars: "\e:wq!\n"}
   # Create a new tmux window
-  - { key: T, mods: Command, chars: "\x02\x63" }
+  - {key: T, mods: Command, chars: "\x02c"}
   # Break the current tmux pane out of the tmux window
-  - { key: T, mods: Command|Shift, chars: "\x02\x21" }
+  - {key: T, mods: Command|Shift, chars: "\x02!"}
   # Kill the current tmux pane (and window if last pane)
-  - { key: W, mods: Command, chars: "\x02\x78" }
+  - {key: W, mods: Command, chars: "\x02x"}
   # Toggle the zoom state of the current tmux pane
-  - { key: Z, mods: Command, chars: "\x02\x7a" }
+  - {key: Z, mods: Command, chars: "\x02z"}
   # Start tmux in search mode
-  - { key: F, mods: Command|Shift, chars: "\x02\x5b\x2f" }
+  - {key: F, mods: Command|Shift, chars: "\x02[/"}
   # Starts zoxide fzf search
-  - { key: J, mods: Command, chars: "\x02\x54" }
+  - {key: J, mods: Command, chars: "\x02T"}
   # Opens a fzf with urls in the current session to easily open
-  - { key: L, mods: Command, chars: "\x02\x75" }
-  # Reloads tmux
-  - { key: R, mods: Command, chars: "\x02\x72" }
-  # Reloads tmux, sketchybar, skhd and yabai 
-  - { key: R, mods: Command, chars: "\x02\x72" }
+  - {key: L, mods: Command, chars: "\x02u"}
+  # Reloads tmux, sketchybar, skhd and yabai
+  - {key: R, mods: Command, chars: "\x02r"}
   # Installs plugins with TPM
-  - { key: I, mods: Command|Shift, chars: "\x02\x49" }
+  - {key: I, mods: Command|Shift, chars: "\x02I"}
   # Splits tmux.conf horizontally
-  - { key: M, mods: Command|Shift, chars: "\x02\x6d" }
+  - {key: M, mods: Command|Shift, chars: "\x02m"}
   # Splits tmux.conf vertically
-  - { key: M, mods: Command, chars: "\x02\x4d" }
+  - {key: M, mods: Command, chars: "\x02M"}
