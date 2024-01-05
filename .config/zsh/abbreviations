@@ -1,3 +1,6 @@
 abbr mux="tmuxinator"
 abbr tn="tmux new -s (pwd | sed 's/.*\///g')"
 abbr createnv="python3 -m venv"
+abbr cbr="git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='' | xargs git checkout"
+abbr ss="yabai --start-service && skhd --start-service && brew services start sketchybar"
+abbr sst="yabai --stop-service && skhd --stop-service && brew services stop sketchybar"

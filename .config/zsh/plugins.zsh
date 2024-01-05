@@ -17,3 +17,6 @@ eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# pyenv
+eval "$(pyenv init -)"

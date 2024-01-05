@@ -55,8 +55,27 @@ lg()
     fi
 }
 
+function ghpr(){
+   GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout
+}
+
+function openapp() {
+        local apps_dir="/Applications"
+        local selected_app
+
+	selected_app=$(find "$apps_dir" -name "*.app" -type d -maxdepth 1 | sed 's/\/Applications\///' | fzf --preview "open '$apps_dir/{}'")
+
+
+        if [ -n "$selected_app" ]; then
+                open "$apps_dir/$selected_app"
+        fi
+}
+
 zle -N change_dir
 bindkey "^f" change_dir
 
 zle -N edit_scripts
 bindkey "^g" edit_scripts
+
+zle -N openapp
+bindkey "^o" openapp
